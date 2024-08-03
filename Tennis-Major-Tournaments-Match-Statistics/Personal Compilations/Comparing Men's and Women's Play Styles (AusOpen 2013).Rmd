@@ -1,0 +1,22 @@
+---
+title: "Tennis Story Graph 1"
+author: "Alwin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Comparing Men's and Women's Play Styles in the 2013 Australian Open
+
+```{r}
+# UFE - Unforced Error
+library(tidyverse)
+p <- ggplot(data = tennis_data,
+            mapping = aes(x = Aspects, y = PerGameStats, fill = Gender))
+p + geom_bar(position = "dodge", stat = "identity") + theme(legend.position = "top")
+```
+
+It appears that men are more successful in scoring aces and net points. Meanwhile, women seem to commit more double faults and unforced errors. This disparity suggests that men score more points through aggressive play styles whereas women play in a more passive manner, waiting for the other person to commit an unforced error.
